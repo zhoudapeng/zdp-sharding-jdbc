@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:properties/*.properties" />
+
+    <bean id="shard_0_write" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${driverClass_shard_0}"/>
+        <property name="jdbcUrl" value="${jdbcUrl_shard_0}"/>
+        <property name="user" value="${user_shard_0}"/>
+        <property name="password" value="${password_shard_0}"/>
+        <property name="initialPoolSize" value="5"/>              <!-- 初始大小 -->
+        <property name="minPoolSize" value="5"/>                  <!-- 最小连接处 -->
+        <property name="maxPoolSize" value="50"/>              <!-- 连接池中保留的最大连接数 -->
+        <property name="maxStatements"
+                  value="0"/>              <!-- 数据源内加载的PreparedStatements数量，和checkoutTimeout合用可能会导致死锁 -->
+        <property name="maxIdleTime" value="20"/>              <!-- 最大空闲时间(秒)。若为0则永不丢弃 -->
+        <property name="acquireIncrement" value="5"/>              <!-- 当连接池中的连接耗尽的时候c3p0一次同时获取的连接数 -->
+        <property name="acquireRetryAttempts" value="10"/>         <!-- 定义在从数据库获取新连接失败后重复尝试的次数 -->
+        <property name="idleConnectionTestPeriod" value="60"/> <!-- 每X秒检查所有连接池中的空闲连接 -->
+        <property name="testConnectionOnCheckin" value="true"/>
+        <property name="preferredTestQuery" value="select 1 from dual"/>
+        <property name="breakAfterAcquireFailure" value="false"/>    <!-- 如果连接无法从数据库中获取一个acquireretryattempts后获得永久关闭 -->
+    </bean>
+
+    <bean id="shard_0_read_0" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${driverClass_shard_0}"/>
+        <property name="jdbcUrl" value="${jdbcUrl_shard_0}"/>
+        <property name="user" value="${user_shard_0}"/>
+        <property name="password" value="${password_shard_0}"/>
+        <property name="initialPoolSize" value="5"/>              <!-- 初始大小 -->
+        <property name="minPoolSize" value="5"/>                  <!-- 最小连接处 -->
+        <property name="maxPoolSize" value="50"/>              <!-- 连接池中保留的最大连接数 -->
+        <property name="maxStatements"
+                  value="0"/>              <!-- 数据源内加载的PreparedStatements数量，和checkoutTimeout合用可能会导致死锁 -->
+        <property name="maxIdleTime" value="20"/>              <!-- 最大空闲时间(秒)。若为0则永不丢弃 -->
+        <property name="acquireIncrement" value="5"/>              <!-- 当连接池中的连接耗尽的时候c3p0一次同时获取的连接数 -->
+        <property name="acquireRetryAttempts" value="10"/>         <!-- 定义在从数据库获取新连接失败后重复尝试的次数 -->
+        <property name="idleConnectionTestPeriod" value="60"/> <!-- 每X秒检查所有连接池中的空闲连接 -->
+        <property name="testConnectionOnCheckin" value="true"/>
+        <property name="preferredTestQuery" value="select 1 from dual"/>
+        <property name="breakAfterAcquireFailure" value="false"/>    <!-- 如果连接无法从数据库中获取一个acquireretryattempts后获得永久关闭 -->
+    </bean>
+
+    <bean id="shard_0_read_1" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${driverClass_shard_0}"/>
+        <property name="jdbcUrl" value="${jdbcUrl_shard_0}"/>
+        <property name="user" value="${user_shard_0}"/>
+        <property name="password" value="${password_shard_0}"/>
+        <property name="initialPoolSize" value="5"/>              <!-- 初始大小 -->
+        <property name="minPoolSize" value="5"/>                  <!-- 最小连接处 -->
+        <property name="maxPoolSize" value="50"/>              <!-- 连接池中保留的最大连接数 -->
+        <property name="maxStatements"
+                  value="0"/>              <!-- 数据源内加载的PreparedStatements数量，和checkoutTimeout合用可能会导致死锁 -->
+        <property name="maxIdleTime" value="20"/>              <!-- 最大空闲时间(秒)。若为0则永不丢弃 -->
+        <property name="acquireIncrement" value="5"/>              <!-- 当连接池中的连接耗尽的时候c3p0一次同时获取的连接数 -->
+        <property name="acquireRetryAttempts" value="10"/>         <!-- 定义在从数据库获取新连接失败后重复尝试的次数 -->
+        <property name="idleConnectionTestPeriod" value="60"/> <!-- 每X秒检查所有连接池中的空闲连接 -->
+        <property name="testConnectionOnCheckin" value="true"/>
+        <property name="preferredTestQuery" value="select 1 from dual"/>
+        <property name="breakAfterAcquireFailure" value="false"/>    <!-- 如果连接无法从数据库中获取一个acquireretryattempts后获得永久关闭 -->
+    </bean>
+
+    <bean id="shard_1_write" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${driverClass_shard_1}"/>
+        <property name="jdbcUrl" value="${jdbcUrl_shard_1}"/>
+        <property name="user" value="${user_shard_1}"/>
+        <property name="password" value="${password_shard_1}"/>
+        <property name="initialPoolSize" value="5"/>              <!-- 初始大小 -->
+        <property name="minPoolSize" value="5"/>                  <!-- 最小连接处 -->
+        <property name="maxPoolSize" value="50"/>              <!-- 连接池中保留的最大连接数 -->
+        <property name="maxStatements"
+                  value="0"/>              <!-- 数据源内加载的PreparedStatements数量，和checkoutTimeout合用可能会导致死锁 -->
+        <property name="maxIdleTime" value="20"/>              <!-- 最大空闲时间(秒)。若为0则永不丢弃 -->
+        <property name="acquireIncrement" value="5"/>              <!-- 当连接池中的连接耗尽的时候c3p0一次同时获取的连接数 -->
+        <property name="acquireRetryAttempts" value="10"/>         <!-- 定义在从数据库获取新连接失败后重复尝试的次数 -->
+        <property name="idleConnectionTestPeriod" value="60"/> <!-- 每X秒检查所有连接池中的空闲连接 -->
+        <property name="testConnectionOnCheckin" value="true"/>
+        <property name="preferredTestQuery" value="select 1 from dual"/>
+        <property name="breakAfterAcquireFailure" value="false"/>    <!-- 如果连接无法从数据库中获取一个acquireretryattempts后获得永久关闭 -->
+    </bean>
+
+    <bean id="shard_1_read_0" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${driverClass_shard_1}"/>
+        <property name="jdbcUrl" value="${jdbcUrl_shard_1}"/>
+        <property name="user" value="${user_shard_1}"/>
+        <property name="password" value="${password_shard_1}"/>
+        <property name="initialPoolSize" value="5"/>              <!-- 初始大小 -->
+        <property name="minPoolSize" value="5"/>                  <!-- 最小连接处 -->
+        <property name="maxPoolSize" value="50"/>              <!-- 连接池中保留的最大连接数 -->
+        <property name="maxStatements"
+                  value="0"/>              <!-- 数据源内加载的PreparedStatements数量，和checkoutTimeout合用可能会导致死锁 -->
+        <property name="maxIdleTime" value="20"/>              <!-- 最大空闲时间(秒)。若为0则永不丢弃 -->
+        <property name="acquireIncrement" value="5"/>              <!-- 当连接池中的连接耗尽的时候c3p0一次同时获取的连接数 -->
+        <property name="acquireRetryAttempts" value="10"/>         <!-- 定义在从数据库获取新连接失败后重复尝试的次数 -->
+        <property name="idleConnectionTestPeriod" value="60"/> <!-- 每X秒检查所有连接池中的空闲连接 -->
+        <property name="testConnectionOnCheckin" value="true"/>
+        <property name="preferredTestQuery" value="select 1 from dual"/>
+        <property name="breakAfterAcquireFailure" value="false"/>    <!-- 如果连接无法从数据库中获取一个acquireretryattempts后获得永久关闭 -->
+    </bean>
+
+    <bean id="shard_1_read_1" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="driverClass" value="${driverClass_shard_1}"/>
+        <property name="jdbcUrl" value="${jdbcUrl_shard_1}"/>
+        <property name="user" value="${user_shard_1}"/>
+        <property name="password" value="${password_shard_1}"/>
+        <property name="initialPoolSize" value="5"/>              <!-- 初始大小 -->
+        <property name="minPoolSize" value="5"/>                  <!-- 最小连接处 -->
+        <property name="maxPoolSize" value="50"/>              <!-- 连接池中保留的最大连接数 -->
+        <property name="maxStatements"
+                  value="0"/>              <!-- 数据源内加载的PreparedStatements数量，和checkoutTimeout合用可能会导致死锁 -->
+        <property name="maxIdleTime" value="20"/>              <!-- 最大空闲时间(秒)。若为0则永不丢弃 -->
+        <property name="acquireIncrement" value="5"/>              <!-- 当连接池中的连接耗尽的时候c3p0一次同时获取的连接数 -->
+        <property name="acquireRetryAttempts" value="10"/>         <!-- 定义在从数据库获取新连接失败后重复尝试的次数 -->
+        <property name="idleConnectionTestPeriod" value="60"/> <!-- 每X秒检查所有连接池中的空闲连接 -->
+        <property name="testConnectionOnCheckin" value="true"/>
+        <property name="preferredTestQuery" value="select 1 from dual"/>
+        <property name="breakAfterAcquireFailure" value="false"/>    <!-- 如果连接无法从数据库中获取一个acquireretryattempts后获得永久关闭 -->
+    </bean>
+
+    <bean id="dataSource" class="com.zdp.sharding.jdbc.ShardingDatasource">
+        <property name="targetDataSources">
+            <map>
+                <entry key="shard_0_write" value-ref="shard_0_write"></entry>
+                <entry key="shard_0_read_0" value-ref="shard_0_read_0"></entry>
+                <entry key="shard_0_read_1" value-ref="shard_0_read_1"></entry>
+                <entry key="shard_1_write" value-ref="shard_1_write"></entry>
+                <entry key="shard_1_read_0" value-ref="shard_1_read_0"></entry>
+                <entry key="shard_1_read_1" value-ref="shard_1_read_1"></entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="dataSourceGroup0" class="com.zdp.sharding.jdbc.DataSourceGroup">
+        <property name="writeKey" value="shard_0_write"></property>
+        <property name="readKeys">
+            <list>
+                <value>shard_0_read_0</value>
+                <value>shard_0_read_1</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="dataSourceGroup1" class="com.zdp.sharding.jdbc.DataSourceGroup">
+        <property name="writeKey" value="shard_1_write"></property>
+        <property name="readKeys">
+            <list>
+                <value>shard_1_read_0</value>
+                <value>shard_1_read_1</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="transDBShardingStrategy" class="com.zdp.sharding.jdbc.strategy.impl.DatabaseShardingStrategyImpl"></bean>
+
+    <bean id="transTableShardingStrategy" class="com.zdp.sharding.jdbc.strategy.impl.TableShardingStrategyImpl"></bean>
+
+    <!--<bean class="com.zdp.sharding.jdbc.ShardingCheckBeanPostProcessor"></bean>-->
+</beans>

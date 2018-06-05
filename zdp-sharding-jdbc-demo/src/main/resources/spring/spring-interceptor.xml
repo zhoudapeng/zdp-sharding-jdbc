@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <bean class="com.zdp.sharding.jdbc.ShardingContext"/>
+    <bean id="shardingInterceptor" class="com.zdp.sharding.jdbc.ShardingInterceptor" >
+        <property name="dataSourceGroups">
+            <map>
+                <entry key="trans_shard_0" value-ref="dataSourceGroup0"></entry>
+                <entry key="trans_shard_1" value-ref="dataSourceGroup1"></entry>
+            </map>
+        </property>
+    </bean>
+    <aop:config>
+        <!--切入点-->
+        <aop:pointcut id="shardingPoint"
+                      expression="execution(public * com.zdp.sharding.jdbc.demo.dao.*.*(..)) "/>
+        <!--在该切入点使用自定义拦截器-->
+        <aop:advisor pointcut-ref="shardingPoint" advice-ref="shardingInterceptor"/>
+    </aop:config>
+    <!--<import resource="classpath*:spring-datasource.xml" />-->
+</beans>

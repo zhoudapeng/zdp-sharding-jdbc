@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zdp.sharding.jdbc.demo.dao.TransDAO" >
+    <resultMap id="BaseResultMap" type="com.zdp.sharding.jdbc.demo.Trans" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="trans_id" property="transId" jdbcType="VARCHAR"/>
+        <result column="trans_name" property="transName" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List" >
+        id,trans_id,trans_name
+    </sql>
+    <select id="query" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from ${trans.tableName}
+        where trans_id=#{trans.transId}
+    </select>
+
+    <insert id="insert" parameterType="com.zdp.sharding.jdbc.demo.Trans">
+        insert into ${trans.tableName}(trans_id,trans_name) values(#{trans.transId},#{trans.transName})
+    </insert>
+
+</mapper>
